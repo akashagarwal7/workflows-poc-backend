@@ -47,6 +47,25 @@ const lib = function () {
     }
 }
 
+const wfTrackMood = {
+    "data": {
+        "template": {
+            "view": "SVMoodForm",
+            "data": {
+                "callbackFlow": "wf-track_mood&",
+                "props": {},
+                "values": [
+                    -2,
+                    -1,
+                    0,
+                    1,
+                    2
+                ]
+            }
+        }
+    }
+}
+
 const obj = new lib()
 
 app.get('/m', (req, res) => {
@@ -56,6 +75,13 @@ app.get('/m', (req, res) => {
     if (!obj[req.query.flow]) return res.send('No flow for that name exists')
     return obj[req.query.flow](res)
     // res.send('Hello World!')
+})
+
+app.get('/api/pa/wf', (req, res) => {
+    if (!req.query || !req.query.flow) return res.send('send flow query param noob')
+
+    if (req.query.flow === 'wf-track_mood') return res.send(wfTrackMood)
+    res.send('Some request received!')
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
