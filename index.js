@@ -52,7 +52,7 @@ const wfTrackMood = {
         "template": {
             "view": "SVMoodForm",
             "data": {
-                "callbackFlow": "wf-track_mood&",
+                "callbackFlow": "wf-track_mood",
                 "props": {},
                 "values": [
                     -2,
@@ -65,6 +65,14 @@ const wfTrackMood = {
         }
     }
 }
+
+const redirectExample = {
+    "data": {
+        "redirect": "somesweetlink.com"
+    }
+}
+
+
 
 const obj = new lib()
 
